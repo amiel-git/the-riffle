@@ -1,0 +1,61 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background: #0E131F;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar{
+    background:transparent !important;
+    padding-top:15px;
+    border-bottom: solid 0.5px lightgray;
+}
+
+.navbar .nav-link{
+    color:white !important;
+}
+
+.navbar-brand img {
+    height: 64px;
+    width:64px;
+}
+
+.hero-div{
+    background:lightgrey;
+    height: 48vh;
+    padding-top: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header-text {
+    font-family: 'Playball', cursive;
+    font-size: 64px;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 26px;
+    color:#A49AC2;
+    margin-bottom: 40px;
+}
+
+.btn-shop {
+    background: linear-gradient(to bottom,#C4C4C4, rgba(196,196,196,0));
+    padding: 10px 80px;
+    color:white;
+}
+
+.btn-shop:hover{
+    color:#A49AC2;
+}

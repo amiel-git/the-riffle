@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block body_block %}
+
+<div class="hero-div"
+style="background-image: url('{% static 'images/hero-image.jpg' %}')">
+    <div class="main-header">
+        <h1 class="header-text">The Riffle</h1>
+    </div>
+    <div class="subtitle-container">
+        <p class="hero-subtitle">The art of a magician is to create wonders. <br>Create yours now in one RIFFLE with the best playing cards in the market</p>
+    </div>
+    <div class="hero-cta-container">
+        <a href="#" class="btn-shop">Shop now</a>
+    </div>
+</div>
+
+
+{% endblock %}
