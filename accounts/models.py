@@ -1,26 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
-
+from django.utils import timezone
 
 class ProfileManager(BaseUserManager):
     """
     Handles the creation of our profiles
     """
-    def create_user(self,email,password=None,**kwargs):
+    def create_user(self,email,password,**additional_args):
 
         if not email:
             raise ValueError("Missing email address")
 
         email = self.normalize_email(email)
-        user = self.model(email=email,**kwargs)
+        user = self.model(email=email,**additional_args)
         user.set_password(password)
-        user.save()
+        user.save(using=self._db)
 
         return user
 
 
-    def create_superuser(self,email,password,**kwargs):
-        user = self.create_user(email=email,password=password,**kwargs)
+    def create_superuser(self,email,password,**additional_args):
+        user = self.create_user(email=email,password=password,**additional_args)
         user.is_staff = True
         user.is_superuser = True
         user.save()
@@ -38,6 +38,8 @@ class Profile(AbstractBaseUser,PermissionsMixin):
     address = models.CharField(max_length=255)
     contact_number = models.CharField(max_length=255)
     password = models.CharField(max_length=50)
+    created_on = models.DateField(auto_now_add=True, null=True)
+    last_updated = models.DateTimeField(auto_now=True, null=True)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

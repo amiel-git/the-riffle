@@ -17,7 +17,7 @@ body{
 }
 
 .navbar .nav-link{
-    color:white !important;
+    color:#E5E5E5 !important;
 }
 
 .navbar-brand img {
@@ -41,21 +41,36 @@ body{
 .header-text {
     font-family: 'Playball', cursive;
     font-size: 64px;
-    color: white;
+    color: #778fc7;
+ 
 }
 
 .hero-subtitle {
-    font-size: 26px;
-    color:#A49AC2;
+    font-size: 24px;
+    color:#E5E5E5;
     margin-bottom: 40px;
+    font-style: italic;
+    font-weight:300;
 }
 
 .btn-shop {
     background: linear-gradient(to bottom,#C4C4C4, rgba(196,196,196,0));
     padding: 10px 80px;
-    color:white;
+    color:#E5E5E5;
 }
 
 .btn-shop:hover{
     color:#A49AC2;
+}
+
+.showcase-section{
+    margin-top: 80px;
+}
+.showcase-header{
+    color:#E5E5E5;
+    font-family: 'Playball', cursive;
+    text-align: center;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    text-underline-offset: 10px;
 }

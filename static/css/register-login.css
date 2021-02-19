@@ -1,0 +1,36 @@
+.registration-form-container{
+    width: 40%;
+    color:#E5E5E5;
+    background: linear-gradient(to left, #bdc3c7, #2c3e50);
+    padding: 30px 50px;
+    border-radius: 10px;
+    position:absolute;
+    top:55%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.registration-form-header {
+    color:#E5E5E5;
+    margin-bottom: 20px;
+}
+
+body {
+    height:100vh
+}
+
+.login-form-container{
+    position:relative;
+    top:33%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 300px;
+    background: linear-gradient(to left, #bdc3c7, #2c3e50);
+    padding: 20px 30px;
+    border-radius: 10px;
+    color: white;
+}
+
+.login-header{
+    margin-bottom: 15px;
+}
