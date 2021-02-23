@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block head_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
+
+{% block body_block %}
+
+<div class="add-product-form-container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+{% endblock %}

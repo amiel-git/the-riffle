@@ -1,0 +1,20 @@
+.products-list {
+    padding: 20px 20px;
+
+}
+
+.products-list-header {
+    color:#E5E5E5;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.table {
+    background:white;
+    text-align:center;
+}
+
+td.cta-col {
+    text-align: right;
+}

@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% block head_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<h2 class="products-list-header">Products List</h2>
+<div class="products-list">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Product ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stocks</th>
+      <th scope="col">Image</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+{% for product in products %}
+<tr>
+<th scope="row">{{product.id}}</th>
+<td>{{product.name}}</td>
+<td>$ {{product.price}}</td>
+<td>{{product.stocks}}</td>
+<td><a href="http://127.0.0.1:8000/media/{{product.product_image}}">{{product.product_image}}</a></td>
+<td class="cta-col">
+  <a href="#" class="update-product btn btn-warning">Update</a>
+  <a href="#" class="delete-product btn btn-danger">Delete</a>
+<td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
