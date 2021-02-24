@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.core import serializers
+
+from django.views import generic
 
 from products.models import Product
 from products.forms import ProductForm
@@ -9,7 +12,9 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse, reverse_lazy
 
 
+
 ## PRODUCTS CRUD views (For staff members only) ##
+
 
 def ProductsListView(request):
 
@@ -45,3 +50,26 @@ def CreateProductView(request):
     return render(request,'products/add-product.html',context={'form':form})
 
 
+class ProductDetailView(generic.DetailView):
+
+    model = Product
+    context_object_name = "product_detail"
+    template_name = "products/product-detail.html"
+
+
+class ProductUpdateView(generic.UpdateView):
+
+    model = Product
+    template_name = "products/add-product.html"
+    fields = [
+        "name",
+        "price",
+        "stocks"
+    ]
+    context_object_name = "product"
+
+
+class ProductDeleteView(generic.DeleteView):
+
+    model = Product
+    success_url = reverse_lazy('products:list')

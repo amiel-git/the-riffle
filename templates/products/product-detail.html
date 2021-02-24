@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block head_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
+
+{% block body_block %}
+
+<div class="product-main-container">
+    <p> Name: {{product_detail.name}}</p>
+    <p>Price: {{product_detail.price}}</p>
+    <p>Stocks: {{product_detail.stocks}}</p>
+    <img src="http://127.0.0.1:8000/media/{{product_detail.product_image}}" alt="product-image">
+</div>
+
+<style>
+    p {
+        color:white;
+    }
+</style>
+{% endblock %}

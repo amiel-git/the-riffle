@@ -8,13 +8,19 @@
 
 
 {% block body_block %}
-
+{% if product %}
+<h2 class="create-product-header">Update Form</h2>
+{% endif %}
 <div class="add-product-form-container">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="form-group">
+            {% if product %}
+            <input type="submit" value="Update" class="btn btn-primary">
+            {% else %}
             <input type="submit" value="Add" class="btn btn-primary">
+            {% endif %}
         </div>
     </form>
 </div>

@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block head_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
+
+{% block body_block %}
+<a style="color:white; margin:20px 0px 20px 20px" href="{% url 'products:list' %}" class="btn btn-secondary"><strong> < products list</strong></a>
+<div class="jumbotron" style="margin:0px 20px 0px 20px">
+    <h2>Are you sure you want to delete product: {{product.name }}</h2>
+    <div class="delete-product-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="btn btn-danger">
+            <a href="{% url 'products:detail' pk=product.id %}">cancel</a>
+        </form>
+    </div>
+</div>
+
+<style>
+    p {
+        color:white;
+    }
+</style>
+{% endblock %}

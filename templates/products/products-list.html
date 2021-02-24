@@ -23,13 +23,13 @@
 {% for product in products %}
 <tr>
 <th scope="row">{{product.id}}</th>
-<td>{{product.name}}</td>
+<td><a href="{% url 'products:detail' pk=product.id %}">{{product.name}}</a></td>
 <td>$ {{product.price}}</td>
 <td>{{product.stocks}}</td>
 <td><a href="http://127.0.0.1:8000/media/{{product.product_image}}">{{product.product_image}}</a></td>
 <td class="cta-col">
-  <a href="#" class="update-product btn btn-warning">Update</a>
-  <a href="#" class="delete-product btn btn-danger">Delete</a>
+  <a href="{% url 'products:update' pk=product.id %}" class="update-product btn btn-warning">Update</a>
+  <a href="{% url 'products:delete' pk=product.id %}" class="delete-product btn btn-danger">Delete</a>
 <td>
 </tr>
 {% endfor %}
