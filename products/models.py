@@ -9,6 +9,8 @@ class Product(models.Model):
     date_added = models.DateField(auto_now_add=True)
     stocks = models.IntegerField(default=0)
     product_image = models.ImageField(blank=True,null=True)
+    number_of_views = models.IntegerField(default=0)
+
 
     def __str__(self):
         return self.name
@@ -16,4 +18,3 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("products:detail", kwargs={"pk": self.id})
-    

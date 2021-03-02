@@ -61,11 +61,7 @@ class ProductUpdateView(generic.UpdateView):
 
     model = Product
     template_name = "products/add-product.html"
-    fields = [
-        "name",
-        "price",
-        "stocks"
-    ]
+    form_class = ProductForm
     context_object_name = "product"
 
 

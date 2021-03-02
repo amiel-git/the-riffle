@@ -16,6 +16,7 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Stocks</th>
+      <th scope="col">Views</th>
       <th scope="col">Image</th>
       <th scope="col"></th>
     </tr>
@@ -26,6 +27,7 @@
 <td><a href="{% url 'products:detail' pk=product.id %}">{{product.name}}</a></td>
 <td>$ {{product.price}}</td>
 <td>{{product.stocks}}</td>
+<td>{{product.number_of_views}}</td>
 <td><a href="http://127.0.0.1:8000/media/{{product.product_image}}">{{product.product_image}}</a></td>
 <td class="cta-col">
   <a href="{% url 'products:update' pk=product.id %}" class="update-product btn btn-warning">Update</a>
