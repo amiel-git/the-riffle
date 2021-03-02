@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core import serializers
 
-from django.views import generic
+from django.views import generic,View
 
 from products.models import Product
 from products.forms import ProductForm
@@ -69,3 +69,17 @@ class ProductDeleteView(generic.DeleteView):
 
     model = Product
     success_url = reverse_lazy('products:list')
+
+
+
+## Products view for customers
+
+class ShopView(View):
+
+    template_name = "shop/shop.html"
+    def get(self,request,*args, **kwargs):
+        products = Product.objects.all().order_by("date_added")
+
+        return render(request,self.template_name,{
+            "products": products
+        })

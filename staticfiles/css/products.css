@@ -1,0 +1,32 @@
+.products-list {
+    padding: 20px 20px;
+
+}
+
+.products-list-header {
+    color:#E5E5E5;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.table {
+    background:white;
+    text-align:center;
+}
+
+td.cta-col {
+    text-align: right;
+}
+
+.create-product-header{
+
+    color:white;
+}
+
+.add-product-form-container{
+    background: white;
+    width: 40%;
+    transform: translate(20px,20px);
+    padding: 20px 20px;
+}
