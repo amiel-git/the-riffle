@@ -13,7 +13,7 @@ SECRET_KEY = 'y!nk_z#=-sem7)2laiyb=)a!#rqp(vel4i3a!8-e#btmf1)!g&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://ecom-riffle.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['ecom-riffle.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -31,12 +31,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'riffle.urls'
