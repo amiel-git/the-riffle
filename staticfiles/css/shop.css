@@ -1,0 +1,36 @@
+.products-container{
+    padding: 0 20px;
+}
+.card {
+    height: 300px !important;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.card-body {
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'montseratt';
+}
+
+.card-body {
+    height:100px;
+}
+
+.card-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.card-header p {
+    margin-bottom: 0;
+}
+
+.shop-header {
+    color: #E5E5E5;
+    margin: 10px 0px;
+    text-align:center;
+    font-family: 'Playball', cursive;
+}
