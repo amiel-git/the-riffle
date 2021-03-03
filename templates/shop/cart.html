@@ -8,14 +8,17 @@
 
 {% block body_block %}
 
-<h2>Cart</h2>
+<div class="order-summary-container">
+  <h2 class="cart-header">{{user.first_name|title}}'s Cart</h2>
+</div>
 
-<table class="table table-stripe">
-    <thead>
+<div class="orders-container">
+  <table class="table table-stripe">
+    <thead class="thead"> 
       <tr>
         <th scope="col">Item</th>
-        <th scope="col">Quantity</th>
         <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
         <th scope="col">Total</th>
       </tr>
     </thead>
@@ -23,18 +26,20 @@
         {% for item in items %}
       <tr>
         <th scope="row">{{item.product.name}}</th>
-        <td>{{item.quantity}}</td>
         <td>${{item.product.price}}</td>
+        <td class="bold-td">{{item.quantity}}
+          <div class="table-cta">
+            
+            <button data-action="add" data-product="{{item.product.id}}" class="quantity-btn">+</button>
+            <button data-action="remove" data-product="{{item.product.id}}" class="quantity-btn">-</button> 
+          </div>
+        </td>
         <td>${{item.get_total}}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+</div>
 
-  <style>
-    .table{
-      color:white !important;
-    }
-  </style>
 
 {% endblock %}

@@ -18,7 +18,7 @@ def updateItem(request):
 
     if action == "add":
         orderItem.quantity = (orderItem.quantity + 1)
-    elif action == "delete":
+    elif action == "remove":
         orderItem.quantity = (orderItem.quantity - 1)
 
     orderItem.save()
@@ -36,9 +36,9 @@ class Cart(View):
 
     def get(self,request):
 
-        order = Order.objects.get(user=request.user,is_complete=False)
+        order, created = Order.objects.get_or_create(user=request.user,is_complete=False)
         items = order.order_item.all()
 
         return render(request,self.template_name,context={
-            "items":items
+            "items":items,
         })

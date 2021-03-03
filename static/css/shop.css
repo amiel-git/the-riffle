@@ -34,3 +34,68 @@
     text-align:center;
     font-family: 'Playball', cursive;
 }
+
+
+
+.orders-container, .order-summary-container{
+    background-color: #212d49;
+    text-align:center;
+    justify-content: center;
+    padding: 20px 0px;
+    width:95%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.order-summary-container{
+    margin: 1rem 0;
+}
+
+.cart-header {
+    color:#E5E5E5;
+    font-family:'Playball','cursive';
+}
+.table {
+    width: 95%;
+    background-color:white;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    margin: 0;
+
+}
+
+.thead {
+    background: #0E131F;
+    color:white;
+    font-weight: 700;
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+}
+
+.bold-td {
+    font-weight: 900;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.table-cta{
+    display:flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+button.quantity-btn{
+    height: 20px;
+    align-items: center;
+    vertical-align: middle;
+    line-height: 10px;
+    border: solid 1px #0e131f;
+    margin-bottom: 2px;
+}
