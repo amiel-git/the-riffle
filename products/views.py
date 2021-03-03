@@ -79,7 +79,6 @@ class ShopView(View):
     template_name = "shop/shop.html"
     def get(self,request,*args, **kwargs):
         products = Product.objects.all().order_by("date_added")
-
         return render(request,self.template_name,{
             "products": products
         })

@@ -18,8 +18,20 @@ class Order(models.Model):
 
     
     def __str__(self):
-        return self.id
+        return f"{self.id}"
     
+
+    @property
+    def get_items_total(self):
+        total = sum([item.get_total for item in self.order_item_set.all()])
+        return total
+
+    @property
+    def get_number_of_items(self):
+        orderitems = self.order_item_set.all()
+        total = sum([item.quantity for item in orderitems])
+        return total
+
 
 
 class OrderItem(models.Model):
@@ -41,5 +53,10 @@ class OrderItem(models.Model):
 
 
     def __str__(self):
-        return self.id
+        return f"{self.id}"
     
+
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
