@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block head_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/shop.css'%}">
+{% endblock %}
+
+{% block body_block %}
+
+<h2>Cart</h2>
+
+<table class="table table-stripe">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+      <tr>
+        <th scope="row">{{item.product.name}}</th>
+        <td>{{item.quantity}}</td>
+        <td>${{item.product.price}}</td>
+        <td>${{item.get_total}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <style>
+    .table{
+      color:white !important;
+    }
+  </style>
+
+{% endblock %}

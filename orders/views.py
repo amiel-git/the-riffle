@@ -5,6 +5,8 @@ import json
 from products.models import Product
 from orders.models import Order,OrderItem
 
+from django.views import View
+
 def updateItem(request):
     data = json.loads(request.body)
     product_id = data['productId']
@@ -25,3 +27,18 @@ def updateItem(request):
         orderItem.delete()
 
     return JsonResponse("Item was added", safe=False)
+
+
+
+class Cart(View):
+
+    template_name = "shop/cart.html"
+
+    def get(self,request):
+
+        order = Order.objects.get(user=request.user,is_complete=False)
+        items = order.order_item.all()
+
+        return render(request,self.template_name,context={
+            "items":items
+        })

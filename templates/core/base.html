@@ -45,10 +45,13 @@
           </li>
           {% endif %}
           </ul>
-          <ul class="form-inline my-2 my-lg-0">
+          <ul class="form-inline my-2 my-lg-0" style="list-style: none">
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a class=" disabled nav-link" href="#" tabindex="-1" aria-disabled="true">Hello, {{user.first_name | title }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'cart'%}" tabindex="-1" aria-disabled="true">Cart</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout'%}" tabindex="-1" aria-disabled="true">Logout</a>
