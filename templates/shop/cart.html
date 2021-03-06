@@ -10,12 +10,22 @@
 
 <div class="order-summary-container">
   <h2 class="cart-header">{{user.first_name|title}}'s Cart</h2>
+  <div class="order-information-container">
+    <div class="order-summary">
+      <p><strong>Number of items: </strong>{{order.get_number_of_items}}</p>
+      <p><strong>Cart Total: </strong>${{order.get_items_total}}</p>
+    </div>
+    <div class="checkout-container">
+      <a href="{% url 'orders:checkout1' %}" class="checkout-btn btn btn-primary">Checkout</a>
+    </div>
+  </div>
 </div>
 
 <div class="orders-container">
   <table class="table table-stripe">
     <thead class="thead"> 
       <tr>
+        <th scope="col"></th>
         <th scope="col">Item</th>
         <th scope="col">Price</th>
         <th scope="col">Quantity</th>
@@ -25,7 +35,10 @@
     <tbody>
         {% for item in items %}
       <tr>
-        <th scope="row">{{item.product.name}}</th>
+        <th scope="row">
+          <img class="product-image" src="/media/{{item.product.product_image}}" alt="{{item.product.name}}">
+        </th>
+        <td>${{item.product.name}}</td>
         <td>${{item.product.price}}</td>
         <td class="bold-td">{{item.quantity}}
           <div class="table-cta">

@@ -14,8 +14,8 @@ class Order(models.Model):
     )
     date_ordered = models.DateTimeField(auto_now_add=True)
     is_complete = models.BooleanField(default=False)
-    shipping_address = models.CharField(max_length=255)
-
+    shipping_address = models.TextField(max_length=255)
+    delivered = models.BooleanField(default=False)
     
     def __str__(self):
         return f"{self.id}"
@@ -23,12 +23,12 @@ class Order(models.Model):
 
     @property
     def get_items_total(self):
-        total = sum([item.get_total for item in self.order_item_set.all()])
+        total = sum([item.get_total for item in self.order_item.all()])
         return total
 
     @property
     def get_number_of_items(self):
-        orderitems = self.order_item_set.all()
+        orderitems = self.order_item.all()
         total = sum([item.quantity for item in orderitems])
         return total
 

@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block head_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/shop.css'%}">
+{% endblock %}
+
+{% block body_block %}
+
+
+<div class="shipping-address-container">
+    <h3>Step 1: Enter your Shipping Address</h3>
+    <form class="shipping-form" id="shipping_address_form" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea form="shipping_address_form" name="shipping_address" id="shipping_address" cols="100" rows="10">{{order.shipping_address}}</textarea>
+        </div>
+        <input type="submit" value="Proceed to payment" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock %}

@@ -13,6 +13,7 @@
     {% load static %}
     <link rel="shortcut icon" href="{% static 'images/logo.png'%}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="https://js.stripe.com/v3/"></script>
     <title>The Riffle</title>
 </head>
 <body>
@@ -39,10 +40,13 @@
             <li class="nav-item">
               <a class="nav-link" href="http://127.0.0.1:8000/admin" tabindex="-1" aria-disabled="true">Admin</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'products:shop'%}" tabindex="-1" aria-disabled="true">Shop</a>
+            </li> 
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'products:shop'%}" tabindex="-1" aria-disabled="true">Shop</a>
-          </li>
+          </li> 
           {% endif %}
           </ul>
           <ul class="form-inline my-2 my-lg-0" style="list-style: none">
