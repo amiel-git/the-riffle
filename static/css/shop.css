@@ -136,3 +136,21 @@ button.quantity-btn{
     resize:none;
     margin-top: 20px;
 }
+
+.product-preview{
+    background:#212d49;
+    color:#E5E5E5;
+    width: 90%;
+    position:relative;
+    left:50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+    padding-bottom: 20px;
+    padding-top: 50px;
+    border-radius: 10px;
+}
+
+#checkout-button{
+    margin-top: 20px;
+    margin-left: 40px;
+}

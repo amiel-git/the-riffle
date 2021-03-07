@@ -7,7 +7,7 @@ from orders.models import Order,OrderItem
 
 from django.views import View
 
-from django.http import HttpResponseRedirect,JsonResponse
+from django.http import HttpResponseRedirect,JsonResponse,HttpResponseNotFound, HttpResponseBadRequest
 from django.urls import reverse
 
 import stripe
@@ -62,14 +62,18 @@ class CheckoutViewStep1(View):
         shipping_address = request.POST.get('shipping_address')
         order = Order.objects.get(user=request.user, is_complete=False)
 
-        order.shipping_address = shipping_address
+        if len(order.order_item.all()) <= 0 :
+            return HttpResponseBadRequest("No items in your cart")
 
+        order.shipping_address = shipping_address
         order.save()
 
         return HttpResponseRedirect(reverse('orders:charge')) # Temporary will change this to step2
 
     def get(self,request):
         order = Order.objects.get(user=request.user, is_complete=False)
+        if len(order.order_item.all()) <= 0 :
+            return HttpResponseBadRequest("No items in your cart")
         context = {'order':order}
         return render(request,self.template_name,context=context)
 
@@ -80,6 +84,8 @@ class CheckoutViewStep2(View):
 
     def post(self,request,*args,**kwargs):
         order = Order.objects.get(user=request.user, is_complete=False)
+        if len(order.order_item.all()) <= 0 :
+            return HttpResponseBadRequest("No items in your cart")
         raw_items = order.order_item.all()
         items = []
         for item in raw_items:
@@ -104,11 +110,13 @@ class CheckoutViewStep2(View):
             success_url= "http://127.0.0.1:8000/orders/success/",
             cancel_url= "http://127.0.0.1:8000/orders/cancel/",
         )
-
+        request.session["did_checkout"] = True
         return JsonResponse({'id': checkout_session.id})
 
     def get(self,request,*args,**kwargs):
         order = Order.objects.get(user=request.user, is_complete=False)
+        if len(order.order_item.all()) <= 0 :
+            return HttpResponseBadRequest("No items in your cart")
         items = order.order_item.all()
         return render(request,"shop/checkout_step2.html",{"order":order,"items":items})
         
@@ -119,13 +127,22 @@ class PaymentSuccessView(View):
     template_name = "shop/success.html"
     def get(self,request,*args,**kwargs):
 
-        return render(request,self.template_name)
+        if request.session.get("did_checkout",False):
+            order = Order.objects.get(user=request.user, is_complete=False)
+            order.is_complete = True
+            order.save()
+            request.session["did_checkout"] = False
+            return render(request,self.template_name)
+        else:
+            return HttpResponseNotFound("Page not found")
 
     
-
 class PaymentCancelledView(View):
 
     template_name = "shop/cancelled.html"
     def get(self,request,*args,**kwargs):
-
-        return render(request,self.template_name)
+        if request.session.get("did_checkout",False):
+            request.session["did_checkout"] = False
+            return render(request,self.template_name)
+        else:
+            return HttpResponseNotFound("Page not found")

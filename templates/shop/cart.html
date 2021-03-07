@@ -15,9 +15,11 @@
       <p><strong>Number of items: </strong>{{order.get_number_of_items}}</p>
       <p><strong>Cart Total: </strong>${{order.get_items_total}}</p>
     </div>
+    {% if items %}
     <div class="checkout-container">
       <a href="{% url 'orders:checkout1' %}" class="checkout-btn btn btn-primary">Checkout</a>
     </div>
+    {% endif %}
   </div>
 </div>
 
