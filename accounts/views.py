@@ -6,9 +6,11 @@ from django.urls import reverse
 
 from django.contrib.auth import login,authenticate,logout
 
-def index(request):
+from products.models import Product
 
-    return render(request,'core/index.html')
+def index(request):
+    latest_products = Product.objects.all().order_by("-date_added")[:6]
+    return render(request,'core/index.html', context={"products":latest_products})
 
 
 def RegistrationView(request):
